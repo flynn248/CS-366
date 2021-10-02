@@ -36,37 +36,33 @@ def powerset(iterable):
 
 def find_closure(func_dependencies, result):
     print("\nResult before loop: %s" % result)
-    print("Functional Dependencies: %s" % func_dependencies)
 
     depencency_exists = False
     result_changed = False
 
     while True:
         for fd in func_dependencies:
-            print("Testing functional dependency: %s" % str(fd))
+#           print("Testing functional dependency: %s" % str(fd))
             num_hits = 0
             result_changed = False
             depencency_exists = False
 
             for element in fd[0]: # check if attributes makes up a dependency
                 if result.count(element) > 0:
-                    print("\tGot a HIT!")
                     num_hits += 1
                 if num_hits == len(fd[0]):
-                    print("\tDependency Exists!")
                     depencency_exists = True
 
             if depencency_exists: # add attribute to result
                 for element in fd[1]:
                     if result.count(element) == 0:
-                        print("\tResult Changed!")
                         result.append(element)
                         result_changed = True
         
         if not result_changed:
             break
 
-    print("Result after loop %s" % result)
+    print("Result after loop : %s" % result)
 
 
     return result
@@ -76,6 +72,8 @@ def attribute_closure():
     attributes, num_attributes = get_attributes()
     attribute_plus = powerset(attributes)
     func_dependencies, num_func_dependencies = get_functional_dependencies()
+
+    print("Functional Dependencies: %s" % func_dependencies)
 
     attr_closure = []
     
