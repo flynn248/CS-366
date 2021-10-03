@@ -2,7 +2,7 @@ from itertools import chain, combinations, combinations_with_replacement
 
 def get_attributes():
     # number of elements
-    n = int(input("Enter number of elements: "))
+    n = int(input("Enter number of attributes: "))
     
     # Below line read inputs from user using map() function
     r = list(map(str,input("\nEnter the letters: ").strip().split()))[:n]
@@ -41,10 +41,10 @@ def find_closure(func_dependencies, result):
     result_changed = False
 
     while True:
+        result_changed = False
         for fd in func_dependencies:
 #           print("Testing functional dependency: %s" % str(fd))
             num_hits = 0
-            result_changed = False
             depencency_exists = False
 
             for element in fd[0]: # check if attributes makes up a dependency
