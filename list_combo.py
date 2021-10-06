@@ -1,4 +1,5 @@
 from itertools import chain, combinations, combinations_with_replacement
+import time
 
 def get_attributes():
     # number of elements
@@ -27,11 +28,13 @@ def get_functional_dependencies():
 
 def powerset(iterable):
     r_plus = []
+    start_time = time.time()
     attr = list(chain.from_iterable(combinations(iterable, r) for r in range(1, len(iterable)+1)))
 
     for fd in attr:
         r_plus.append(str(fd).replace(',', '').replace('(', '').replace(')', '').replace('\'', '').replace(' ', ''))
     
+    print("\nPowerset Took :" + str(time.time() - start_time) + "s") 
     return r_plus
 
 def find_closure(func_dependencies, result):
@@ -76,7 +79,7 @@ def attribute_closure():
     print("Functional Dependencies: %s" % func_dependencies)
 
     attr_closure = []
-    
+    start_time = time.time()
     for i in range(0, (pow(2,num_attributes) - 1)):
         result = []
         for element in attribute_plus[i]:  # Add attributes of an element from powerset of attributes to result
@@ -85,7 +88,8 @@ def attribute_closure():
         
         attr_closure.append((attribute_plus[i], find_closure(func_dependencies, result)))
 
-    print(attr_closure)
+    print("\nAttribute Closure Took :" + str(time.time() - start_time) + "s") 
+    #print(attr_closure)
 
 
 
