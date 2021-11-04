@@ -8,10 +8,10 @@ import java.sql.Statement;
 public class SimpleQueryDemo {
 
 	    static final String databasePrefix ="cs366-2217_flynnsg10";
-	    static final String netID =""; // Please enter your netId
+	    static final String netID ="flynnsg10"; // Please enter your netId
 	    static final String hostName ="washington.uww.edu"; //140.146.23.39 or washington.uww.edu
 	    static final String databaseURL ="jdbc:mariadb://"+hostName+"/"+databasePrefix;
-	    static final String password=""; // please enter your own password
+	    static final String password="sf0495"; // please enter your own password
 	  
 	    private Connection connection = null;
         private Statement statement = null;
